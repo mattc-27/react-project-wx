@@ -1,38 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Karla:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600;700&display=swap');
+
+
 .App {
-  text-align: center;
+  height: fit-content;
+  margin: 0px auto;
+  padding: 0;
+  font-family: 'Karla', sans-serif;
+  /*
+  background: -webkit-linear-gradient(to right, #0F2027, #203A43, #2C5364 ); 
+  background: linear-gradient(to right, #0F2027, #203A43, #2C5364); 
+  */
+  background-image: url(./6231375.jpg);
+  background-size: cover;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.gridContainer {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.3fr 0.5fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "TopBar "
+    "Current "
+    "Forecast ";
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.TopBar {
+  grid-area: 'TopBar';
+  width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Current {
+  grid-area: 'Current';
+  width: 100%;
+}
+
+.Forecast {
+  grid-area: 'Forecast';
+  width: 100%;
+}
+
+
+/*** 
+TopBar
+**********/
+.topContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 5px;
+  flex-wrap: wrap;
+}
+
+.appTitle {
+  font-size: 30px;
+  font-family: 'Fira Sans';
+  font-weight: 400;
+  color: #e9e7e7;
+}
+
+.searchContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  height: 35px;
+  width: 300px;
+  border-radius: 60px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.814);
+}
+
+.searchContainer input {
+  flex: 1;
+  border: 0;
+  outline: none;
+  padding: 24px 20px;
+  font-size: 18px;
+  font-family: 'Fira Sans';
+  background: transparent;
+}
+
+.searchButton {
+  border: none;
+  background: none;
+  border-radius: 50%;
+  padding: 7px 8px;
+  cursor: pointer;
+  color: #3d8aa4;
+}
+
+:hover.searchButton {
+  color: rgba(17, 17, 86, 0.658);
+  cursor: pointer;
+}
+
+/*** 
+Current section layout
+***********/
+
+.currentTop {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.currentBottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.currentLeft {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  flex-grow: 0.4;
+  flex-wrap: wrap;
+}
+
+.currentRight {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  flex-grow: 0.6;
+  height: 400px;
+  flex-wrap: wrap;
+}
+
+/*** 
+Current conditions
+***********/
+.conditionsLeft {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-grow: 0.4;
+  padding: 5px;
+  background-color: rgba(125, 125, 125, 0.15);
+  backdrop-filter: blur(5px);
+}
+
+.conditionsRight {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-self: center;
+  flex-basis: 500px;
+  height: 200px;
+  /*background-color: rgba(255, 255, 255, .15); */
+  background-color: rgba(39, 39, 40, 0.251);
+  backdrop-filter: blur(5px);
+}
+
+.currentTemp {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+}
+
+.currentDesc {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.currentTemp h2 {
+  font-size: 58px;
+  font-weight: 600;
+  font-family: 'Fira Sans';
+  color: #e9e7e7;
+  min-width: 0;
+}
+
+.currentDesc p {
+  font-size: 34px;
+  font-weight: 00;
+  font-family: 'Fira Sans';
+  color: #e9e7e7;
+  min-width: 0;
+}
+
+#currentIcon {
+  float: left;
+  align-self: center;
+}
+
+/*** 
+Day overview
+***********/
+.tempHighLow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 30%;
+  min-width: 0;
+  font-weight: 600;
+  color: #fbf5f5;
+}
+
+.tempHigh,
+.tempLow {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  min-width: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.tempHigh p,
+.tempLow p {
+  font-size: 20px;
+  font-family: 'Fira Sans';
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/*** 
+Location and date
+***********/
+.locationDate {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  width: 90%;
+  padding: 0 10px;
+  border-bottom: 0.5px solid #fff;
+}
+
+.location p {
+  font-size: 38px;
+  font-weight: 500;
+  flex-wrap: wrap;
+  color: #e9e7e7;
+  margin: 5px;
+  font-family: 'Fira Sans';
+}
+
+.date p {
+  font-size: 24px;
+  font-weight: 500;
+  color: #e9e7e7;
+  margin: 5px;
+  font-family: 'Fira Sans';
+}
+
+/*** 
+Hourly forecast
+***********/
+.DayHourly {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+.forecastContainer {
+  flex: 0 19%;
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border: 1px solid #ffffff;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 3px 5px;
+  color: #e9e7e7;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, .15);
+  backdrop-filter: blur(5px);
+}
+
+/******* *******/
+@media only screen and (max-width: 768px) {
+  .locationDate {
+    justify-content: center;
+    align-items: center;
   }
-  to {
-    transform: rotate(360deg);
-  }
+
 }
